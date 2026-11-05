@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   PromptLab Intergeneracional
+  </title>
+  <link href="./css/styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header>
+   <div class="brand">
+    <img alt="Logo Universidad de Caldas" src="assets/logo-ucaldas.svg"/>
+    <div>
+     <strong>
+      PromptLab &middot; Intergeneracional
+     </strong>
+     <div class="small muted">
+      Universidad de Caldas &middot; Taller de prompts
+     </div>
+    </div>
+   </div>
+   <div class="tools">
+    <button aria-label="Reducir letra" class="secondary" data-action="changeFont(-1)">
+     A&minus;
+    </button>
+    <button aria-label="Aumentar letra" class="secondary" data-action="changeFont(1)">
+     A+
+    </button>
+    <button class="secondary" data-action="toggleContrast()">
+     Alto contraste
+    </button>
+    <button class="secondary" data-action="resetAccessibility()">
+     Restablecer vista
+    </button>
+   </div>
+  </header>
+  <main>
+   <section class="card">
+    <div class="flex">
+     <span aria-hidden="true" class="mascot">
+      <img alt="" height="72" src="assets/profe-ia.svg" width="72"/>
+     </span>
+     <div>
+      <span class="pill">
+       Tu acompa&ntilde;ante: Profe IA
+      </span>
+      <h1>
+       &iexcl;Aprende a crear mejores prompts!
+      </h1>
+     </div>
+    </div>
+    <p>
+     Practica a tu ritmo, recibe pistas y construye instrucciones &uacute;tiles para ChatGPT. No necesitas registrarte.
+    </p>
+    <div aria-label="Progreso" class="progress">
+     <div id="bar" style="width: 0%">
+     </div>
+    </div>
+    <p class="small muted" id="progressText">
+     0 de 12 retos completados
+    </p>
+   </section>
+   <nav aria-label="Secciones">
+    <button data-action="show('home')">
+     Inicio
+    </button>
+    <button data-action="show('learn')">
+     Aprender
+    </button>
+    <button data-action="show('practice')">
+     Practicar
+    </button>
+    <button data-action="show('builder')">
+     Crear mi prompt
+    </button>
+    <button data-action="show('library')">
+     Mis prompts
+    </button>
+    <button data-action="show('homework')">
+     Practica en casa
+    </button>
+   </nav>
+   <section id="home">
+    <h2>
+     &iquest;Por d&oacute;nde quieres empezar?
+    </h2>
+    <div class="grid">
+     <div class="card">
+      <h3>
+       📖 Aprende
+      </h3>
+      <p>
+       Conoce los cinco ingredientes de una buena instrucci&oacute;n.
+      </p>
+      <button data-action="show('learn')">
+       Comenzar
+      </button>
+     </div>
+     <div class="card">
+      <h3>
+       🧩 Practica
+      </h3>
+      <p>
+       Doce retos con pistas y sin cron&oacute;metro.
+      </p>
+      <button data-action="show('practice')">
+       Ver retos
+      </button>
+     </div>
+     <div class="card">
+      <h3>
+       ✨ Crea
+      </h3>
+      <p>
+       Construye y guarda un prompt para tu vida diaria.
+      </p>
+      <button data-action="show('builder')">
+       Crear ahora
+      </button>
+     </div>
+     <div class="card">
+      <h3>
+       🏠 Practica en casa
+      </h3>
+      <p>
+       Una gu&iacute;a paso a paso para continuar a tu ritmo.
+      </p>
+      <button data-action="show('homework')">
+       Ver mi misi&oacute;n
+      </button>
+     </div>
+    </div>
+   </section>
+   <section class="hidden" id="learn">
+    <h2>
+     Aprende con Profe IA
+    </h2>
+    <div class="card">
+     <p>
+      🤖
+      <strong>
+       Un prompt
+      </strong>
+      es una instrucci&oacute;n o pregunta que le escribimos a una inteligencia artificial. No necesita ser largo: necesita ser claro.
+     </p>
+     <ol>
+      <li>
+       <strong>
+        Rol:
+       </strong>
+       &iquest;qu&eacute; tipo de ayuda necesitas?
+      </li>
+      <li>
+       <strong>
+        Tarea:
+       </strong>
+       &iquest;qu&eacute; debe hacer?
+      </li>
+      <li>
+       <strong>
+        Contexto:
+       </strong>
+       &iquest;qu&eacute; informaci&oacute;n necesita conocer?
+      </li>
+      <li>
+       <strong>
+        Formato:
+       </strong>
+       &iquest;c&oacute;mo quieres recibir el resultado?
+      </li>
+      <li>
+       <strong>
+        L&iacute;mites:
+       </strong>
+       &iquest;qu&eacute; debe evitar o respetar?
+      </li>
+     </ol>
+     <p>
+      <strong>
+       Ejemplo:
+      </strong>
+      En lugar de &laquo;Hazme una receta&raquo;, prueba &laquo;Sugiere una cena para dos personas con arroz, huevo y tomate, lista en 20 minutos. Explica los pasos con palabras sencillas&raquo;.
+     </p>
+     <p class="muted">
+      No todos los prompts necesitan los cinco elementos. Lo importante es que sirvan para tu prop&oacute;sito.
+     </p>
+     <div class="lesson">
+      <h3>
+       Truco 1: pide ejemplos
+      </h3>
+      <p>
+       &laquo;Expl&iacute;came qu&eacute; es un presupuesto familiar y dame un ejemplo con n&uacute;meros sencillos&raquo;.
+      </p>
+      <h3>
+       Truco 2: mejora la respuesta
+      </h3>
+      <p>
+       &laquo;Ahora hazlo m&aacute;s corto, con palabras sencillas y en una tabla&raquo;.
+      </p>
+      <h3>
+       Truco 3: pide preguntas antes de responder
+      </h3>
+      <p>
+       &laquo;Antes de proponer una soluci&oacute;n, hazme tres preguntas para entender mi situaci&oacute;n&raquo;.
+      </p>
+      <h3>
+       Truco 4: verifica
+      </h3>
+      <p>
+       &laquo;Separa lo que sabes de lo que est&aacute;s suponiendo y dime qu&eacute; datos debo comprobar&raquo;.
+      </p>
+      <h3>
+       Truco 5: usa un ejemplo como modelo
+      </h3>
+      <p>
+       &laquo;Sigue este estilo: t&iacute;tulo corto, tres pasos y un ejemplo cotidiano&raquo;.
+      </p>
+     </div>
+     <button data-action="show('practice')">
+      Ahora quiero practicar
+     </button>
+    </div>
+   </section>
+   <section class="hidden" id="practice">
+    <h2>
+     Zona de desaf&iacute;os
+    </h2>
+    <p class="muted">
+     Resuelve los retos en el orden que quieras. Puedes pedir una pista. No hay l&iacute;mite de tiempo.
+    </p>
+    <div aria-label="Elegir nivel" class="tools" role="group">
+     <button class="secondary" data-action="jumpLevel(0)">
+      🌱 Descubro
+     </button>
+     <button class="secondary" data-action="jumpLevel(4)">
+      ✏️ Construyo
+     </button>
+     <button class="secondary" data-action="jumpLevel(8)">
+      🚀 Experimento
+     </button>
+    </div>
+    <div id="challenge">
+    </div>
+    <div class="tools">
+     <button class="secondary" data-action="prev()">
+      &larr; Anterior
+     </button>
+     <button class="secondary" data-action="next()">
+      Siguiente &rarr;
+     </button>
+    </div>
+   </section>
+   <section class="hidden" id="builder">
+    <h2>
+     Constructor de prompts
+    </h2>
+    <div class="card">
+     <p>
+      🤖 Profe IA: &laquo;Contesta estas preguntas con tus propias palabras. Yo te ayudar&eacute; a organizar tu instrucci&oacute;n&raquo;.
+     </p>
+     <label for="task">
+      &iquest;Qu&eacute; necesitas que haga ChatGPT?
+     </label>
+     <textarea id="task" placeholder="Por ejemplo: ayudarme a redactar una carta"></textarea>
+     <label for="context">
+      &iquest;Qu&eacute; debe saber sobre tu situaci&oacute;n?
+     </label>
+     <textarea id="context" placeholder="Por ejemplo: la carta es para solicitar un sal&oacute;n comunitario"></textarea>
+     <label for="format">
+      &iquest;C&oacute;mo quieres recibir la respuesta?
+     </label>
+     <input id="format" placeholder="Por ejemplo: una carta corta y respetuosa"/>
+     <label for="limits">
+      &iquest;Qu&eacute; debe tener en cuenta?
+     </label>
+     <input id="limits" placeholder="Por ejemplo: usar palabras sencillas y no inventar datos"/>
+     <div class="tools space-top">
+      <button data-action="build()">
+       Construir mi prompt
+      </button>
+     </div>
+     <div class="hidden" id="built">
+      <h3>
+       Tu prompt
+      </h3>
+      <div class="prompt" id="output">
+      </div>
+      <div class="tools space-top">
+       <button data-action="copyPrompt()">
+        Copiar
+       </button>
+       <button class="secondary" data-action="savePrompt()">
+        Guardar en mi biblioteca
+       </button>
+       <button class="secondary" data-action="downloadPrompt()">
+        Descargar .txt
+       </button>
+      </div>
+      <p class="small muted">
+       Copia el texto, abre ChatGPT y pru&eacute;balo. Si no te convence la respuesta, pide una mejora.
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="hidden" id="library">
+    <h2>
+     Mi biblioteca de prompts
+    </h2>
+    <p class="muted">
+     Se guarda solo en este navegador. Si cambias de equipo o borras sus datos, puedes perderla: descarga tus prompts importantes.
+    </p>
+    <div id="saved">
+    </div>
+    <button class="secondary" data-action="exportLibrary()">
+     Descargar mi biblioteca
+    </button>
+   </section>
+   <section class="hidden" id="homework">
+    <h2>
+     🏠 Practica en casa con Profe IA
+    </h2>
+    <div class="card">
+     <div class="flex">
+      <img alt="Profe IA, acompa&ntilde;ante del taller" height="90" src="assets/profe-ia.svg" width="90"/>
+      <div>
+       <h3>
+        &iexcl;Tu misi&oacute;n no tiene af&aacute;n!
+       </h3>
+       <p>
+        Realiza los pasos a tu ritmo. Puedes volver cuando quieras.
+       </p>
+      </div>
+     </div>
+     <ol class="homework-steps">
+      <li>
+       Entra a
+       <strong>
+        Aprender
+       </strong>
+       y lee los ejemplos.
+      </li>
+      <li>
+       Completa al menos
+       <strong>
+        cuatro retos
+       </strong>
+       en Practicar. Si necesitas ayuda, usa las pistas.
+      </li>
+      <li>
+       En
+       <strong>
+        Crear mi prompt
+       </strong>
+       , escribe una necesidad de tu vida cotidiana.
+      </li>
+      <li>
+       Copia el prompt, pru&eacute;balo en ChatGPT y pide una mejora.
+      </li>
+      <li>
+       Guarda el resultado en
+       <strong>
+        Mis prompts
+       </strong>
+       y descarga tu biblioteca.
+      </li>
+     </ol>
+     <p>
+      <strong>
+       Si terminas r&aacute;pido:
+      </strong>
+      completa los doce retos y crea dos prompts distintos.
+     </p>
+     <div class="tools">
+      <button data-action="show('learn')">
+       Comenzar a aprender
+      </button>
+      <button class="secondary" data-action="show('practice')">
+       Ir a mis retos
+      </button>
+      <button class="secondary" data-action="downloadHomework()">
+       Descargar instrucciones
+      </button>
+     </div>
+    </div>
+    <div class="card">
+     <h3>
+      &iquest;Te quedaste atascado?
+     </h3>
+     <p>
+      Profe IA te recomienda: vuelve a leer la instrucci&oacute;n, pide una pista y prueba de nuevo. No hay tiempo l&iacute;mite ni penalizaciones.
+     </p>
+     <p class="muted">
+      Recuerda no compartir contrase&ntilde;as, n&uacute;meros de identificaci&oacute;n ni informaci&oacute;n privada en tus prompts.
+     </p>
+    </div>
+   </section>
+  </main>
+  <footer>
+   Material did&aacute;ctico para el Programa Intergeneracional &middot; Universidad de Caldas. Recurso did&aacute;ctico de apoyo; no es un sitio web oficial de la Universidad. Sin conexi&oacute;n a modelos de IA ni recopilaci&oacute;n de datos en servidor.
+  </footer>
+  <script src="./js/app.js" type="module">
+  </script>
+ </body>
+</html>
