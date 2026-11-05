@@ -39,7 +39,7 @@
           <h1>&iexcl;Aprende a crear mejores prompts!</h1>
         </div>
       </div>
-      <p>Practica a tu ritmo, recibe pistas y construye instrucciones &uacute;tiles para ChatGPT. No necesitas registrarte y no hay l&iacute;mite de tiempo.</p>
+      <p>Practica a tu ritmo, resuelve retos, completa misiones en tu cuaderno y gana tus certificados. No necesitas registrarte y no hay l&iacute;mite de tiempo.</p>
       <div aria-label="Progreso general" class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barWrap"><div id="bar" style="width: 0%"></div></div>
       <p class="small muted" id="progressText">0 retos completados</p>
     </section>
@@ -49,9 +49,9 @@
       <button data-action="show('learn')" data-section="learn">1. Aprender</button>
       <button data-action="show('compare')" data-section="compare">2. Antes y despu&eacute;s</button>
       <button data-action="show('practice')" data-section="practice">3. Retos</button>
-      <button data-action="show('doctor')" data-section="doctor">4. Doctor de prompts</button>
-      <button data-action="show('builder')" data-section="builder">5. Crear mi prompt</button>
-      <button data-action="show('library')" data-section="library">Mis prompts</button>
+      <button data-action="show('missions')" data-section="missions">4. Misiones</button>
+      <button data-action="show('builder')" data-section="builder">Constructor</button>
+      <button data-action="show('library')" data-section="library">Mi cuaderno</button>
       <button data-action="show('certificates')" data-section="certificates">🎓 Certificados</button>
       <button data-action="show('homework')" data-section="homework">En casa</button>
     </nav>
@@ -96,7 +96,7 @@
       </div>
 
       <div class="card">
-        <h3>Cinco trucos para mejorar cualquier respuesta</h3>
+        <h3>Siete trucos para mejorar cualquier respuesta</h3>
         <div class="lesson">
           <h4>Truco 1: pide ejemplos</h4>
           <p>&laquo;Expl&iacute;came qu&eacute; es un presupuesto familiar y dame un ejemplo con n&uacute;meros sencillos&raquo;.</p>
@@ -108,6 +108,10 @@
           <p>&laquo;Separa lo que sabes de lo que est&aacute;s suponiendo y dime qu&eacute; datos debo comprobar&raquo;.</p>
           <h4>Truco 5: usa un ejemplo como modelo</h4>
           <p>&laquo;Sigue este estilo: t&iacute;tulo corto, tres pasos y un ejemplo cotidiano&raquo;.</p>
+          <h4>Truco 6: cuando faltan datos, no dejes que invente</h4>
+          <p>&laquo;No inventes datos. Deja espacios entre corchetes [as&iacute;] donde van mis datos y dime qu&eacute; informaci&oacute;n te falta&raquo;.</p>
+          <h4>Truco 7: pide que te cuente qu&eacute; supuso</h4>
+          <p>&laquo;Al final, haz una lista de lo que supusiste y de lo que debo confirmar&raquo;.</p>
         </div>
       </div>
 
@@ -152,7 +156,7 @@
     <!-- RETOS -->
     <section class="hidden" id="practice">
       <h2>Zona de retos</h2>
-      <p class="muted">Resuelve los retos en el orden que quieras. Puedes pedir hasta dos pistas. No hay l&iacute;mite de tiempo.</p>
+      <p class="muted">Hay cinco tipos de retos: opci&oacute;n &uacute;nica, marcar varias, clasificar, completar y redactar. Puedes pedir hasta dos pistas y no hay l&iacute;mite de tiempo.</p>
       <div aria-label="Elegir nivel" class="tools" role="group" id="levelButtons"></div>
       <div id="challenge"></div>
       <div class="tools">
@@ -161,17 +165,17 @@
       </div>
     </section>
 
-    <!-- DOCTOR DE PROMPTS -->
-    <section class="hidden" id="doctor">
-      <h2>🩺 Doctor de prompts</h2>
-      <p class="muted">Aqu&iacute; escribes de verdad. Te damos un prompt &laquo;enfermo&raquo; y lo mejoras con tus palabras. El doctor te dice qu&eacute; le falta. Con 3 de 4 revisiones aprobadas, el caso queda completo.</p>
-      <div class="tools" role="group" aria-label="Elegir caso" id="doctorTabs"></div>
-      <div class="card" id="doctorBody"></div>
+    <!-- MISIONES -->
+    <section class="hidden" id="missions">
+      <h2>🧪 Misiones</h2>
+      <p class="muted">Aqu&iacute; es donde de verdad practicas: escribes, pruebas en ChatGPT, mejoras y cuentas qu&eacute; aprendiste. Las misiones 1, 2 y 3 son la tarea principal; la 4 y la 5 son para profundizar. Nada se califica por palabras clave: t&uacute; decides cu&aacute;ndo terminaste.</p>
+      <div id="missionBody"></div>
     </section>
 
     <!-- CREAR -->
     <section class="hidden" id="builder">
       <h2>Constructor de prompts</h2>
+      <p class="muted">Una herramienta de apoyo: te ayuda a ordenar tus ideas en un prompt. Para entregar trabajo, usa las Misiones.</p>
       <div class="card">
         <p>🤖 Profe IA: &laquo;Contesta estas preguntas con tus propias palabras. Yo te ayudo a organizar tu instrucci&oacute;n&raquo;.</p>
         <label for="role">&iquest;Qu&eacute; tipo de ayudante quieres? <span class="muted">(opcional)</span></label>
@@ -207,7 +211,7 @@
             <label for="improveText">&iquest;Qu&eacute; le pediste para mejorarla y qu&eacute; cambi&oacute;?</label>
             <textarea id="improveText" placeholder="Por ejemplo: le ped&iacute; que fuera m&aacute;s corta y qued&oacute; en cinco l&iacute;neas"></textarea>
             <div class="tools space-top">
-              <button data-action="savePrompt()">Guardar en mi biblioteca</button>
+              <button data-action="savePrompt()">Guardar en mi cuaderno</button>
             </div>
           </div>
         </div>
@@ -216,16 +220,16 @@
 
     <!-- BIBLIOTECA -->
     <section class="hidden" id="library">
-      <h2>Mi biblioteca de prompts</h2>
-      <p class="muted">Se guarda solo en este navegador. Si cambias de equipo o borras sus datos, puedes perderla: descarga tus prompts importantes.</p>
+      <h2>📓 Mi cuaderno de experimentos</h2>
+      <p class="muted">Se guarda solo en este navegador. Si cambias de equipo o borras sus datos, puedes perderlo: descarga tu cuaderno.</p>
       <div id="saved"></div>
-      <button class="secondary" data-action="exportLibrary()">Descargar mi biblioteca</button>
+      
     </section>
 
     <!-- CERTIFICADOS -->
     <section class="hidden" id="certificates">
       <h2>🎓 Tus certificados</h2>
-      <p class="muted">Ganas un certificado al terminar cada nivel. Es un reconocimiento de participaci&oacute;n en este taller; no es un t&iacute;tulo ni un documento oficial de la Universidad.</p>
+      <p class="muted">Hay un certificado por cada nivel (Descubro, Construyo y Experimento) y uno especial, &laquo;Maestro de prompts&raquo;, para quien complete las misiones avanzadas. Son reconocimientos de participaci&oacute;n en este taller; no son un t&iacute;tulo ni un documento oficial de la Universidad.</p>
       <div class="card">
         <label for="studentName">Escribe tu nombre como quieres que aparezca</label>
         <input id="studentName" autocomplete="name" maxlength="60" placeholder="Nombre y apellido">
@@ -243,25 +247,28 @@
 
     <!-- EN CASA -->
     <section class="hidden" id="homework">
-      <h2>🏠 Practica en casa con Profe IA</h2>
+      <h2>🏠 Tarea: mi laboratorio personal de prompts</h2>
       <div class="card">
         <div class="flex">
           <img alt="Profe IA, acompa&ntilde;ante del taller" height="90" src="assets/profe-ia.svg" width="90">
           <div>
-            <h3>&iexcl;Tu misi&oacute;n no tiene af&aacute;n!</h3>
-            <p>Realiza los pasos a tu ritmo. Puedes volver cuando quieras.</p>
+            <h3>&iexcl;Tu tarea no tiene af&aacute;n!</h3>
+            <p>Haz los pasos a tu ritmo. Puedes volver cuando quieras.</p>
           </div>
         </div>
+        <h3>Entrega principal</h3>
         <ol class="homework-steps">
-          <li>Termina los <strong>tres niveles</strong> de Retos y gana tus certificados.</li>
-          <li>Completa los <strong>cinco casos</strong> del Doctor de prompts.</li>
-          <li>En <strong>Crear mi prompt</strong>, escribe una necesidad real de tu vida diaria y pru&eacute;bala en ChatGPT.</li>
-          <li>Pide una mejora, cu&eacute;ntanos qu&eacute; cambi&oacute; y guarda el resultado en <strong>Mis prompts</strong>.</li>
-          <li>Descarga tu biblioteca y comparte con tu familia lo que aprendiste.</li>
+          <li>Completa los niveles <strong>Descubro</strong> y <strong>Construyo</strong> en Retos.</li>
+          <li>Resuelve las <strong>misiones 1, 2 y 3</strong>.</li>
+          <li>En la Misi&oacute;n 2, crea un prompt propio y <strong>mej&oacute;ralo dos veces</strong>.</li>
+          <li>Descarga <strong>Mi cuaderno</strong> y entr&eacute;galo: debe mostrar tu prompt inicial, el mejorado y una breve comparaci&oacute;n de resultados.</li>
         </ol>
+        <h3>Para profundizar (opcional)</h3>
+        <p>Completa el nivel <strong>Experimento</strong> y las <strong>misiones 4 y 5</strong> para ganar el certificado &laquo;Maestro de prompts&raquo;.</p>
         <div class="tools">
-          <button data-action="show('learn')">Comenzar a aprender</button>
-          <button class="secondary" data-action="show('practice')">Ir a mis retos</button>
+          <button data-action="show('missions')">Ir a las misiones</button>
+          <button class="secondary" data-action="show('practice')">Ir a los retos</button>
+          <button class="secondary" data-action="exportLibrary()">Descargar mi cuaderno</button>
           <button class="secondary" data-action="downloadHomework()">Descargar instrucciones</button>
         </div>
       </div>

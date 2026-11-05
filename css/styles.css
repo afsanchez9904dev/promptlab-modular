@@ -380,3 +380,43 @@ button:disabled { opacity:.55; cursor:not-allowed; }
   body.printing-cert #certPreview { position:absolute; left:0; top:0; width:100%; }
   body.printing-cert #certPreview img { border:0; }
 }
+
+/* ===== PromptLab v3: tipos de reto, misiones, cuaderno, comparador ===== */
+.rows { display:grid; gap:10px; margin:14px 0; }
+.row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:10px 14px; border:1px solid #c7d5e8; border-radius:12px; background:#fff; }
+.row-text { flex:1 1 280px; line-height:1.4; }
+.row select { flex:0 1 240px; width:auto; min-width:170px; }
+.row-ok { border:2px solid #21814c; background:#e7f6ed; }
+.row-miss { border:2px solid #b66b00; background:#fff4d9; }
+.fill { line-height:2.4; font-size:1.05rem; }
+.blank { display:inline-block; margin:0 4px; }
+.blank select { width:auto; max-width:min(100%,420px); padding:8px; }
+.blank.row-ok select { border-color:#21814c; }
+.blank.row-miss select { border-color:#b66b00; }
+.write-box textarea { min-height:140px; }
+.rubric { border:2px dashed #9baec7; border-radius:14px; padding:10px 16px 14px; margin:16px 0 4px; }
+.rubric legend { font-weight:650; padding:0 8px; }
+.choice input[type="checkbox"] { width:auto; margin-right:12px; }
+.mission-card.is-done { background:#f1f8f4; border-color:#b8dcc6; }
+.pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px; }
+.pill-req { background:#fff4d9; color:#633b00; }
+.pill-opt { background:#eaf2ff; color:#123c6b; }
+.pill-done { background:#e7f6ed; color:#14532d; }
+.mfield { margin:16px 0 20px; }
+.mfield label { margin-bottom:2px; }
+.counter-ok { color:#14532d; font-weight:650; }
+.diff { white-space:pre-wrap; line-height:1.7; background:#f8faff; border:1px solid #d8e3f2; border-radius:10px; padding:12px 14px; }
+ins { background:#d9f2e2; color:#0f4a28; font-weight:700; text-decoration:underline; text-underline-offset:3px; border-radius:3px; padding:0 2px; }
+del { background:#ffe4e0; color:#7a1f14; text-decoration:line-through; border-radius:3px; padding:0 2px; }
+.diff-card { background:#fff; }
+.contrast .row, .contrast .rubric { border:2px solid #000; }
+.contrast .row-ok { background:#dcfce7; }
+.contrast .row-miss { background:#fef08a; }
+.contrast ins { background:#fff; color:#000; border:1px solid #000; }
+.contrast del { background:#fff; color:#000; border:1px solid #000; }
+@media (max-width:600px) {
+  .row select { flex:1 1 100%; }
+  .fill { line-height:2.8; }
+  .blank { display:block; margin:6px 0; }
+  .blank select { width:100%; max-width:none; }
+}
