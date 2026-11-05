@@ -1,51 +1,54 @@
 # PromptLab Intergeneracional
 
-Sitio educativo estático, adaptable y sin backend, preparado para GitHub Pages.
+Sitio educativo estático, sin backend, listo para GitHub Pages. Pensado para una clase virtual en la que el facilitador muestra la plataforma y los participantes practican por su cuenta.
+
+## Qué incluye
+
+| Sección | Qué hace |
+|---|---|
+| Inicio | «Tu ruta de hoy»: 8 pasos que se marcan solos y dicen qué sigue. |
+| 1. Aprender | Seguridad, cinco ingredientes, cinco trucos, voz y fotos, cómo entrar a ChatGPT. |
+| 2. Antes y después | 3 comparaciones de prompt vago vs. mejorado, con respuestas de ejemplo. |
+| 3. Retos | 14 retos en 3 niveles (Descubro 5, Construyo 4, Experimento 5), con opciones barajadas y 2 pistas. |
+| 4. Doctor de prompts | 5 casos: la persona reescribe un prompt y recibe una revisión de 4 puntos. |
+| 5. Crear mi prompt | Constructor (rol, tarea, contexto, formato, límites) + pegar la respuesta de ChatGPT y contar la mejora. |
+| Mis prompts | Biblioteca local descargable. |
+| Certificados | Un certificado por nivel (imagen PNG descargable / imprimir o PDF). |
+
+## Certificados
+
+- **Descubro:** los 5 retos del nivel.
+- **Construyo:** los 4 retos + 3 casos del Doctor de prompts.
+- **Experimento:** los 5 retos + un prompt guardado con la respuesta pegada y la mejora contada.
+
+Son reconocimientos de participación. Llevan escrito que **no son un título ni un documento oficial**; no quites esa frase sin autorización de la Universidad. Verifica el uso de los logos según https://www.ucaldas.edu.co/portal/identidad-institucional/.
 
 ## Estructura
 
 ```text
-promptlab-intergeneracional/
-├── index.html              # Estructura semántica y contenido de las secciones
-├── css/
-│   └── styles.css          # Diseño, accesibilidad y adaptación móvil
-├── js/
-│   ├── app.js              # Estado, navegación, eventos, progreso y biblioteca
-│   └── challenges.js       # Banco editable de 12 preguntas
-├── assets/
-│   ├── profe-ia.svg        # Mascota original
-│   └── logo-ucaldas.svg    # Referencia temporal; reemplazar por logo autorizado
-└── README.md
+index.html            Estructura y textos de las secciones
+css/styles.css        Diseño, accesibilidad, móvil, impresión
+js/app.js             Navegación, progreso, doctor, constructor, certificados
+js/challenges.js      Retos, casos del Doctor y comparaciones (editable)
+assets/               Logos, mascota y favicon (mantener los nombres de archivo)
+GUIA-FACILITADOR.md   Guion de la sesión de 1 h 15 min
 ```
 
-## Publicación en GitHub Pages
+## Publicar en GitHub Pages
 
-1. Sube **todos los archivos y carpetas** a la raíz de un repositorio de GitHub.
-2. Abre **Settings → Pages**.
-3. En **Build and deployment**, selecciona **Deploy from a branch**, `main` y `/(root)`.
-4. Guarda y abre la dirección que GitHub indique.
+1. Sube todos los archivos a la raíz de un repositorio.
+2. Settings → Pages → Deploy from a branch → `main` / `(root)`.
+3. Comparte el enlace (o un código QR) con los participantes.
 
-> Los módulos JavaScript requieren un servidor HTTP(S). Para pruebas locales usa `python -m http.server 8000` desde la carpeta del proyecto y abre `http://localhost:8000`. No abras `index.html` directamente con `file://`.
+Los módulos JavaScript requieren HTTP(S). Para probar en local: `python -m http.server 8000` y abre `http://localhost:8000` (no `file://`).
 
-## Identidad institucional
+## Cómo editar contenido
 
-`assets/logo-ucaldas.svg` es una referencia temporal, **no un logotipo oficial verificado**. Antes de distribuir la plataforma, reemplázalo por el recurso autorizado de la Universidad de Caldas. Verifica las pautas en https://www.ucaldas.edu.co/portal/identidad-institucional/.
+- **Retos:** `js/challenges.js` → `challenges`. Cada reto lleva un `id` único y estable (el progreso se guarda por id). Propiedades: `level`, `q`, `ctx` (opcional), `options`, `correct`, `hint`, `explain`, `wrong`. El orden de las opciones se baraja solo.
+- **Doctor de prompts:** `doctorCases`. Cada revisión tiene `label`, `tip` y `test` (expresión regular sobre el texto en minúsculas). Es una revisión por palabras clave: ajústala si ves que rechaza prompts buenos.
+- **Antes y después:** `comparisons`. Las respuestas son de ejemplo, escritas a mano.
+- **Requisitos de certificado:** `certStatus` en `js/app.js`.
 
-## Cómo modificar
+## Privacidad
 
-- **Diseño y tamaño:** `css/styles.css`.
-- **Preguntas y respuestas:** `js/challenges.js` (mantener propiedades `level`, `q`, `options`, `correct`, `hint`, `explain`).
-- **Navegación, progreso, biblioteca:** `js/app.js`.
-- **Textos de lecciones y secciones:** `index.html`.
-
-## Privacidad y limitaciones
-
-No hay servidor, registro de usuarios ni conexión a un modelo de IA. Profe IA ofrece pistas programadas. Los avances y prompts se almacenan únicamente en `localStorage` del navegador; no se sincronizan entre dispositivos. Se pueden descargar copias en texto plano.
-
-## Identidad visual
-
-El encabezado utiliza `assets/universidad-de-caldas.png` y `assets/universidad-intergeneracional.png`, suministrados para este proyecto. Mantén ambos archivos en la carpeta `assets` al publicar en GitHub Pages.
-
-## Identidad visual
-
-Los dos logos institucionales suministrados están en `assets/`. El favicon usa un recorte del símbolo central del logo de la Universidad de Caldas. Para actualizar la identidad visual, reemplaza los archivos manteniendo sus nombres.
+No hay servidor, registro ni conexión a un modelo de IA. El avance, el nombre y los prompts se guardan solo en `localStorage` del navegador de cada persona. El facilitador no puede ver el progreso: si necesitas evidencia, pide que descarguen su biblioteca o su certificado. En «En casa» hay un botón para borrar todo en equipos compartidos.
