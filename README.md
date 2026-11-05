@@ -41,3 +41,11 @@ promptlab-intergeneracional/
 ## Privacidad y limitaciones
 
 No hay servidor, registro de usuarios ni conexión a un modelo de IA. Profe IA ofrece pistas programadas. Los avances y prompts se almacenan únicamente en `localStorage` del navegador; no se sincronizan entre dispositivos. Se pueden descargar copias en texto plano.
+
+## Identidad visual
+
+El encabezado utiliza `assets/universidad-de-caldas.png` y `assets/universidad-intergeneracional.png`, suministrados para este proyecto. Mantén ambos archivos en la carpeta `assets` al publicar en GitHub Pages.
+
+## Identidad visual
+
+Los dos logos institucionales suministrados están en `assets/`. El favicon usa un recorte del símbolo central del logo de la Universidad de Caldas. Para actualizar la identidad visual, reemplaza los archivos manteniendo sus nombres.
