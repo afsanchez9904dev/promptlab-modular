@@ -1,3 +1,4 @@
+import { initDriveBackup } from './drive-backup.js';
 import { challenges, LEVELS, doctorCases, comparisons } from './challenges.js';
 import { missions } from './missions.js';
 
@@ -959,6 +960,34 @@ function resetAll() {
   try { Object.values(KEYS).forEach((k) => localStorage.removeItem(k)); } catch { /* sin almacenamiento */ }
   window.location.reload();
 }
+
+// ---------- respaldo integral del progreso ----------
+function exportProgressData() {
+  const data = {};
+  for (const [name, key] of Object.entries(KEYS)) data[name] = localStorage.getItem(key);
+  return { app: 'PromptLab Intergeneracional', schemaVersion: 3, savedAt: new Date().toISOString(), data };
+}
+function importProgressData(payload) {
+  if (!payload || payload.app !== 'PromptLab Intergeneracional' || payload.schemaVersion !== 3 ||
+      !payload.data || typeof payload.data !== 'object' || Array.isArray(payload.data)) {
+    throw new Error('Este archivo no es un respaldo válido de PromptLab v3.');
+  }
+  for (const name of Object.keys(KEYS)) {
+    const value = payload.data[name];
+    if (value !== null && value !== undefined && typeof value !== 'string') throw new Error(`El dato ${name} no es válido.`);
+    if (typeof value === 'string' && value.length > 2_000_000) throw new Error('El respaldo es demasiado grande.');
+    if (['progress','doctor','library','seen','unlocked','doctorWork','writes','notebook'].includes(name) && value !== null && value !== undefined) {
+      try { JSON.parse(value); } catch { throw new Error(`El dato ${name} está dañado.`); }
+    }
+  }
+  // Se validan todos los campos antes de modificar el almacenamiento.
+  for (const [name,key] of Object.entries(KEYS)) {
+    const value = payload.data[name];
+    if (value === null || value === undefined) localStorage.removeItem(key);
+    else localStorage.setItem(key,value);
+  }
+}
+initDriveBackup({ exportData: exportProgressData, importData: importProgressData });
 
 // ---------- eventos ----------
 const actions = {

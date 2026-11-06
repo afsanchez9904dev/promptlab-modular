@@ -222,6 +222,17 @@
     <section class="hidden" id="library">
       <h2>📓 Mi cuaderno de experimentos</h2>
       <p class="muted">Se guarda solo en este navegador. Si cambias de equipo o borras sus datos, puedes perderlo: descarga tu cuaderno.</p>
+      <div class="card drive-backup" aria-labelledby="driveHeading">
+        <h3 id="driveHeading">☁️ Guardar mi progreso en Google Drive</h3>
+        <p>PromptLab guarda automáticamente tus avances en este navegador, incluso si apagas el computador. Para tener una copia en tu cuenta de Google y continuar desde otro equipo, usa estos botones.</p>
+        <div class="tools">
+          <button type="button" id="driveSave">☁️ Guardar en Drive</button>
+          <button type="button" id="driveRestore" class="secondary">↩️ Recuperar de Drive</button>
+        </div>
+        <p id="driveStatus" class="small" role="status" aria-live="polite"></p>
+        <p class="small muted"><strong>Importante:</strong> la copia de Drive NO se actualiza sola. Pulsa «Guardar en Drive» al terminar de trabajar. Para recuperar tu progreso en otro equipo, entra con la misma cuenta de Google y pulsa «Recuperar de Drive». Google puede solicitarte permiso.</p>
+        <p class="small muted">Tu respaldo se guarda en una carpeta privada de datos de la aplicación en tu Drive; no aparece como archivo normal en «Mi unidad».</p>
+      </div>
       <div id="saved"></div>
       
     </section>
@@ -290,6 +301,7 @@
   <footer>
     Material did&aacute;ctico para el Programa Intergeneracional &middot; Universidad de Caldas. Recurso did&aacute;ctico de apoyo; no es un sitio web oficial de la Universidad. Sin conexi&oacute;n a modelos de IA ni recopilaci&oacute;n de datos en servidor.
   </footer>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="./js/app.js" type="module"></script>
 </body>
 </html>

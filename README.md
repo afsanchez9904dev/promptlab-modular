@@ -70,3 +70,7 @@ Los módulos JavaScript requieren HTTP(S). Para probar en local: `python -m http
 ## Privacidad
 
 No hay servidor, registro ni conexión a un modelo de IA. Todo (avance, nombre, escritos) se guarda en `localStorage` del navegador de cada persona. El facilitador no puede ver el progreso: la evidencia es el cuaderno descargado (.txt) o el certificado. La sección «Tarea» tiene un botón para borrar todo en equipos compartidos. Si actualizas desde la v2, el avance anterior no se conserva (cambian las claves de almacenamiento).
+
+## Respaldo voluntario en Google Drive
+
+Esta versión incorpora botones «Guardar en Drive» y «Recuperar de Drive» en **Mi cuaderno**. Antes de activarlos, configura el ID OAuth público en `js/google-config.js` siguiendo [CONFIGURAR-GOOGLE-DRIVE.md](CONFIGURAR-GOOGLE-DRIVE.md). El progreso local sigue funcionando sin Google. El respaldo en Drive es manual y no fusiona datos entre dispositivos.
